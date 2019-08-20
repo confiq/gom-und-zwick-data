@@ -1,10 +1,20 @@
 import logging
 import argparse
+from lib.gom import Gom
+from lib.zwick import Zwick
 from IPython import embed
 
 def main(gom_file, zwich_file, output=False):
+    gom = Gom(gom_file)
+    gom.clear()
+    gom.get_max()
+
+    zwick = Zwick(zwich_file)
+    zwick.clear()
+    zwick.get_max()
+
+    
     embed()
-    pass
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Merging two datasets from GOM and ZWICK',
