@@ -6,14 +6,14 @@ from IPython import embed
 
 def main(gom_file, zwich_file, output=False):
     gom = Gom(gom_file)
-    gom.clear()
+    gom.make_csv()
     gom.get_max()
 
     zwick = Zwick(zwich_file)
-    zwick.clear()
+    zwick.make_csv()
     zwick.get_max()
 
-    
+
     embed()
 
 if __name__ == '__main__':

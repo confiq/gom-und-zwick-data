@@ -1,3 +1,5 @@
-class Zwick:
+from lib.measuring_device import Device
+
+class Zwick(Device):
     def __init__(self, file):
-        self.file = file
+        super().__init__(file)
