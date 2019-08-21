@@ -18,7 +18,7 @@ def main(gom_file, zwich_file, output=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Merging two datasets from GOM and ZWICK',
-                                     epilog='Script that merges to dataset to one')
+                                     epilog='Script that merges two datasets into one')
     parser.add_argument('-g', '--gom-file', help='File with GOM data', required=True)
     parser.add_argument('-z', '--zwich-file', help='File with Zwick data', required=True)
     parser.add_argument('-o', '--output-file', help='Name of file for output (csv). If not provided, it will go to '
