@@ -10,15 +10,15 @@ def main(gom_file, zwich_file, output=False):
     functions.init_program()
 
     gom = Gom(gom_file)
-    gom.make_csv()
-    embed()
-    gom.get_max()
+    gom.load_csv(';')
+    gom_breakpointing = gom.get_max_row(3)
 
     zwick = Zwick(zwich_file)
-    zwick.make_csv()
-    zwick.get_max()
-
+    zwick.load_csv("\t")
+    zwick_breakingpoint = zwick.get_max_row(1)
     embed()
+
+
 
 
 if __name__ == '__main__':

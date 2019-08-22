@@ -1,10 +1,11 @@
 from lib.measuring_device import Device
-from io import StringIO
-import csv
+
 
 class Gom(Device):
     def __init__(self, file):
+        self.encoding = 'UTF-8'
         super().__init__(file)
+        self._clear()
 
     def _clear(self):
         """
@@ -12,8 +13,4 @@ class Gom(Device):
         we just remove first 3 lines
         :return:
         """
-        return self.fcontent.split("\n", 3)[3]
-
-    def make_csv(self):
-
-        pass
+        self.fcontent = self.fcontent.split("\n", 3)[3]
