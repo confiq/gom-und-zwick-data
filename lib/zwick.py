@@ -9,7 +9,6 @@ class Zwick(Device):
     def _clear(self):
         """
         Function that clears the garbage from text so we can make proper CSV from it.
-        we just remove first 3 lines
         :return:
         """
         self.fcontent = self.fcontent.split("\n", 4)[4]

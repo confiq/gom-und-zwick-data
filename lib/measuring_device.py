@@ -32,4 +32,5 @@ class Device(ABC):
         for idx, row in enumerate(self.csv):
             if max_value[1] <= row[column_number]:
                 max_value = (idx, row[column_number])
+        logging.info(f"max value for {self.__class__.__name__} is {max_value[1]} at row number {max_value[0]}")
         return max_value

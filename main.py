@@ -16,6 +16,10 @@ def main(gom_file, zwich_file, output=False):
     zwick = Zwick(zwich_file)
     zwick.load_csv("\t")
     zwick_breakingpoint = zwick.get_max_row(1)
+    logging.info(r"The breaking point for ")
+
+    for final_row_number in range(gom_breakpointing[0]):
+        pass
     embed()
 
 
