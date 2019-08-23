@@ -12,17 +12,26 @@ def main(gom_file, zwich_file, output=False):
     gom = Gom(gom_file)
     gom.load_csv(';')
     gom_breakpointing = gom.get_max_row(3)
+    logging.info(f"The breaking point for gom is at {gom.csv[gom_breakpointing[0]][0]} sec")
 
     zwick = Zwick(zwich_file)
     zwick.load_csv("\t")
     zwick_breakingpoint = zwick.get_max_row(1)
-    logging.info(r"The breaking point for ")
-
-    for final_row_number in range(gom_breakpointing[0]):
-        pass
+    diff_time = gom.csv[gom_breakpointing[0]][0] - zwick.csv[zwick_breakingpoint[0]][2]
+    logging.info(f"The breaking point for zwick is at {zwick.csv[zwick_breakingpoint[0]][2]} sec. "
+                 f"Difference of {diff_time} sec")
+    generated_csv = []
+    zwick_working_row_id = 0
+    for generating_row_id in range(1, gom_breakpointing[0]):
+        gom_working_row = gom.csv[gom_breakpointing[0] - generating_row_id]
+        index = 0
+        collect_zwick_avarage = []
+        while zwick.csv[zwick_breakingpoint[0]-index][2] + diff_time >= gom_working_row[0]:
+            collect_zwick_avarage.append(zwick.csv[zwick_breakingpoint[0]-index])
+            index += 1
+        break
+        avg = [float(sum(col)) / len(col) for col in zip(*collect_zwick_avarage)]
     embed()
-
-
 
 
 if __name__ == '__main__':
