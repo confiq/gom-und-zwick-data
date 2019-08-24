@@ -4,7 +4,6 @@ from lib.gom import Gom
 from lib.zwick import Zwick
 import lib.functions as functions
 import csv
-from IPython import embed
 
 
 def main(gom_file, zwich_file, output=False):
