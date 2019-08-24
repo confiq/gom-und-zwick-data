@@ -5,7 +5,10 @@ import csv
 import locale
 
 class Device(ABC):
+    ENCODING = 'UTF-8'
+
     def __init__(self, file):
+        super().__init__()
         logging.debug(f"Loading {self.__class__.__name__} object ...")
         self.file_name = file
         self.csv = []
@@ -18,8 +21,8 @@ class Device(ABC):
         pass
 
     def file_get_contents(self, filename):
-        logging.debug(f'opening file {filename} with {self.encoding}')
-        with open(filename, encoding=self.encoding) as f:
+        logging.debug(f'opening file {filename} with {self.ENCODING}')
+        with open(filename, encoding=self.ENCODING) as f:
             return f.read()
 
     def load_csv(self, delimiter=";"):

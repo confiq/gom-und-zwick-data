@@ -1,9 +1,8 @@
-from lib.measuring_device import Device
+from lib.device import Device
 
 
 class Gom(Device):
     def __init__(self, file):
-        self.encoding = 'UTF-8'
         super().__init__(file)
         self._clear()
 

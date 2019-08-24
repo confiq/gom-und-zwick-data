@@ -1,8 +1,10 @@
-from lib.measuring_device import Device
+from lib.device import Device
+
 
 class Zwick(Device):
+    ENCODING = 'ISO-8859-1'  # who on the earth use this 💩 anymore?
+
     def __init__(self, file):
-        self.encoding = 'ISO-8859-1'  # who in 21 century don't use unicode anymore?
         super().__init__(file)
         self._clear()
 
