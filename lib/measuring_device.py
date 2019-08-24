@@ -28,8 +28,9 @@ class Device(ABC):
         for idx, row in enumerate(csv.reader(f, delimiter=delimiter)):
             try:
                 converted_row = list(map(locale.atof, row))
-            except ValueError:
-                logging.error(f'Could not convert in file {self.file_name}:{idx} with values {row} to float. Ignoring')
+            except ValueError as e:
+                logging.warning(f'Could not convert a row in file {self.file_name}:{idx} with values {row} to float.'
+                                f'The message is: {e}. - Ignoring the row')
                 continue
             self.csv.append(converted_row)
 
