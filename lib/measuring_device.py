@@ -23,9 +23,15 @@ class Device(ABC):
             return f.read()
 
     def load_csv(self, delimiter=";"):
+        logging.debug(f'Loading CSV for file {self.file_name}')
         f = StringIO(self.fcontent)
-        for row in csv.reader(f, delimiter=delimiter):
-            self.csv.append(list(map(locale.atof, row)))
+        for idx, row in enumerate(csv.reader(f, delimiter=delimiter)):
+            try:
+                converted_row = list(map(locale.atof, row))
+            except ValueError:
+                logging.error(f'Could not convert in file {self.file_name}:{idx} with values {row} to float. Ignoring')
+                continue
+            self.csv.append(converted_row)
 
     def get_max_row(self, column_number):
         max_value = (0, 0)
