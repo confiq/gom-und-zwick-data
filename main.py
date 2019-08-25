@@ -23,7 +23,7 @@ def main(gom_file, zwich_file, output=False):
                  f"Difference of {diff_time} sec")
     generated_csv = []
     zwick_working_row_id = 0
-    for generating_row_id in range(1, gom_breakpointing[0]):
+    for generating_row_id in range(0, gom_breakpointing[0]):
         gom_working_row = gom.csv[gom_breakpointing[0] - generating_row_id]
         collect_zwick_avarage = []
         try:
